@@ -5,6 +5,7 @@ export const NavigationElement = styled.nav`
   position: relative;
   z-index: 1000;
   margin: 0 0 2rem;
+  background: #fafafa;
 
   .logo {
     max-height: 100%;

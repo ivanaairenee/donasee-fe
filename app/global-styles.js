@@ -1,12 +1,13 @@
 import { injectGlobal } from 'styled-components';
 
+
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
   html,
   body {
     min-height: 100vh;
     width: 100%;
-    background: #FAFAFA;
+    background: #dedede;
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -16,7 +17,7 @@ injectGlobal`
   }
 
   body.fontLoaded {
-    font-family: 'Montserrat', 'sans-serif', Helvetica, Arial, sans-serif;
+    font-family: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
@@ -33,5 +34,4 @@ injectGlobal`
   h6 {
     line-height: 1.25;
   }
-
 `;
