@@ -20,10 +20,15 @@ import {
   FETCH_CAMPAIGNS,
   CHOOSE_CAMPAIGN,
   CREATE_CAMPAIGN,
+  MAKE_DONATIONS,
 } from './globalConstants';
 
 export function chooseCampaign(campaignIndex) {
   return { type: CHOOSE_CAMPAIGN, campaignIndex };
+}
+
+export function makeDonations(data) {
+  return { type: MAKE_DONATIONS, data };
 }
 
 /**

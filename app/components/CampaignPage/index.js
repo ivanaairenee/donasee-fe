@@ -11,6 +11,7 @@ import { push } from 'react-router-redux';
 import { Line } from 'rc-progress';
 import { CampaignPageElement } from './style';
 import placeholder1 from 'assets/placeholdersickman.png';
+import { chooseCampaign } from '../../globalActions';
 
 class CampaignPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -18,6 +19,12 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
     super(props);
 
     this.renderDonations = this.renderDonations.bind(this);
+    this.chooseCampaign = this.chooseCampaign.bind(this);
+  }
+
+  chooseCampaign(idx) {
+    this.props.chooseCampaign(idx);
+    this.props.dispatch(push('/donate'));
   }
 
   renderDonations(donations) {
@@ -25,8 +32,8 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
       return (
         <div>
           {
-            donations.map((donation) => (
-              <div className='donation'>
+            donations.map((donation, idx) => (
+              <div className='donation' key={ idx }>
                 <h3>{ donation.name }</h3>
                 <h3>{ donation.amount }</h3>
               </div>
@@ -42,8 +49,8 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
     return (
         <div>
         {
-          campaigns.map((campaign) => (
-            <CampaignPageElement>
+          campaigns.map((campaign, index) => (
+            <CampaignPageElement key={ index }>
               <div className="campaign">
                 <div className="campaign-headers">
                   <h1> {campaign.title} </h1>
@@ -62,7 +69,7 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
                       <h3> { `Terkumpul Rp. ${campaign.donations.map((donation) => donation.amount).reduce((a, b) => a + b , 0)} `}</h3>
                     </div>
 
-                    <button className="donate" onClick={() => this.props.chooseCampaign()}>
+                    <button className="donate" onClick={() => this.chooseCampaign(index)}>
                       DONASI SEKARANG
                     </button>
                   </div>
@@ -108,11 +115,13 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
 
 CampaignPage.propTypes = {
   campaigns: PropTypes.array.isRequired,
+  chooseCampaign: PropTypes.func.isRequired,
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     push: (url) => dispatch(push(url)),
+    chooseCampaign: (idx) => dispatch(chooseCampaign(idx)),
     dispatch,
   };
 }

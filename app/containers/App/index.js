@@ -17,7 +17,11 @@ import gtmParts from 'react-google-tag-manager';
 import Navigation from 'components/Navigation';
 import HomePage from 'containers/HomePage';
 import CreateCampaign from 'components/CreateCampaign';
-import { fetchLogin } from 'globalActions';
+import {
+  fetchLogin,
+  fetchAllCampaigns ,
+} from 'globalActions';
+
 import makeSelectGlobal from 'globalSelectors';
 import { createStructuredSelector } from 'reselect';
 
@@ -31,6 +35,7 @@ export class App extends React.PureComponent { // eslint-disable-line react/pref
     if (this.props.Global.loggedIn) {
       this.props.fetchLogin();
     }
+    this.props.fetchAllCampaigns();
   }
 
   render() {
@@ -52,6 +57,7 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchLogin: () => dispatch(fetchLogin()),
     dispatch,
+    fetchAllCampaigns: () => dispatch(fetchAllCampaigns()),
   };
 }
 

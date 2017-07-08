@@ -10,8 +10,8 @@ import { take, call, put, fork, race } from 'redux-saga/effects';
 import {
   getAllCampaigns,
   createCampaign,
+  postMakeDonations
 } from 'api';
-
 import swal from 'sweetalert';
 import auth from 'auth';
 
@@ -29,6 +29,7 @@ import {
   FETCH_CAMPAIGNS,
   CREATE_CAMPAIGN,
   CREATE_CAMPAIGN_SUCCESS,
+  MAKE_DONATIONS,
 } from 'globalConstants';
 
 
@@ -306,6 +307,41 @@ export function* getCampaignsWatcher() {
   }
 }
 
+export function* makeDonations(data) {
+  yield put({ type: SENDING_REQUEST, sending: true });
+
+  try {
+    const response = yield call(postMakeDonations, data);
+    yield put({ type: MAKE_DONATIONS, data: response.body });
+    yield put({ type: SENDING_REQUEST, sending: false });
+
+    return response;
+  } catch (error) {
+    yield put({ type: REQUEST_ERROR, error: error.message });
+
+    return false;
+  }
+}
+
+export function* makeDonationsWatcher() {
+  while (true) {
+    const request = yield take(MAKE_DONATIONS);
+
+    const data = request.data;
+    const response = yield call(makeDonations, data);
+
+    if (response) {
+      swal({
+        title: 'Success',
+        text: 'Donation has been send successfully!',
+        type: 'success',
+      }, () => {
+        forwardTo('/');
+      });
+    }
+  }
+}
+
 
 export function* createCampaignFlow(data) {
   yield put({ type: SENDING_REQUEST, sending: true});
@@ -355,6 +391,7 @@ export default function* root() {
   yield fork(fetchLoginFlow);
   yield fork(getCampaignsWatcher);
   yield fork(createCampaignWatcher);
+  yield fork(makeDonationsWatcher);
 }
 
 // Little helper function to abstract going to different pages
