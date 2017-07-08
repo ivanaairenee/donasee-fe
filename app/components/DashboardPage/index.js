@@ -15,19 +15,19 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
   render() {
     return (
       <DashboardPageElement>
-      	<div className="content">
-	      	<div className="dashboard-nav">
-	      		<button>
-	      			<p>Campaign Progress</p>
-	      		</button>
-	      		<button>
-	      			<p>Create New </p>
-	      		</button>
-	      	</div>
-	      	<div className="campaign-list">
-	      		lorem
-	      	</div>
-      	</div>
+        <div className="content">
+          <div className="dashboard-nav">
+            <button>
+              <p>Campaign Progress</p>
+            </button>
+            <button>
+              <p>Create New </p>
+            </button>
+          </div>
+          <div className="campaign-list">
+            lorem
+          </div>
+        </div>
       </DashboardPageElement>
     );
   }

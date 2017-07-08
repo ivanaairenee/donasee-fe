@@ -11,13 +11,6 @@ export const PaymentElement = styled.div`
   border-radius: 1rem;
   box-shadow: 0 6px 15px rgba(36,37,38,0.08);
 
-  h1 {
-      margin-top: 1rem 0 0 0;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #646464;
-  }
-
   input {
     width: 20rem;
     background: #fafafa;
