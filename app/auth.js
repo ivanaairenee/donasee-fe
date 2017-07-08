@@ -25,7 +25,7 @@ const auth = {
       .send({ email, password })
       .then((response) => {
         localStorage.token = response.body.token;
-        alert("tokeenn222: " + response.body.token);
+        //alert("tokeenn222: " + response.body.token);
         request.set('Authorization', `JWT ${response.body.token}`);
         return Promise.resolve(true);
       });

@@ -52,7 +52,7 @@ export function* authorize({ email, password, isRegistering, community_name, adm
   } catch (error) {
     // If we get an error we send Redux the appropiate action and return
     //console.log(error);
-    alert("here hereee errorrr");
+    //alert("here hereee errorrr");
     swal('Error!', error.response.body.detail, 'error');
 
     yield put({ type: REQUEST_ERROR, error: error.response.body.detail });
@@ -135,7 +135,7 @@ export function* fetchLogin() {
 
     return response;
   } catch (error) {
-    alert("masukkk error fetchhhh");
+    //alert("masukkk error fetchhhh");
     yield put({ type: LOGOUT });
     yield put({ type: REQUEST_ERROR, error: error.message });
 
