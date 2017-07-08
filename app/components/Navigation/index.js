@@ -3,11 +3,14 @@
  *
  *  styles are coded on ./style.js
  */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import logo from 'assets/logo.png';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { NavigationElement } from './style';
+import makeSelectGlobal from '../../globalSelectors';
+import { createStructuredSelector } from 'reselect';
+
 
 class Navigation extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -27,12 +30,25 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
             <button>
               LOGIN/SIGNUP
             </button>
+            <button>
+              LOGOUT
+            </button>
           </div>
         </div>
       </NavigationElement>
     );
   }
 }
+
+Navigation.propTypes = {
+  Global: PropTypes.object,
+  params: PropTypes.object,
+  push: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = createStructuredSelector({
+  Global: makeSelectGlobal(),
+});
 
 function mapDispatchToProps(dispatch) {
   return {

@@ -22,10 +22,10 @@ class CampaignProgress extends React.Component { // eslint-disable-line react/pr
             <h2> {this.props.title} </h2>
             <div className="campaign-status">
               <div className="status">
-                <h3> {this.props.amount} </h3>
-                <Line percent="70" strokeWidth="3" strokeColor="#94DCD2" className="line"/>
+                <h3> { `Rp. ${this.props.amount}`} </h3>
+                <Line percent={`${this.props.current / this.props.amount * 100}`} strokeWidth="3" strokeColor="#94DCD2" className="line"/>
                 <div className="status-text">
-                  <p className="collected"> Terkumpul {this.props.current}</p>
+                  <p className="collected"> Terkumpul { `Rp. ${this.props.current}` }</p>
                   <div className="action">
                     <button className="green">
                       Edit
@@ -44,15 +44,11 @@ class CampaignProgress extends React.Component { // eslint-disable-line react/pr
   }
 }
 
-CampaignProgress.defaultProps = {
-  current: '0',
-}
-
 CampaignProgress.propTypes = {
   title: React.PropTypes.string.isRequired,
-  amount: React.PropTypes.string.isRequired,
-  current: React.PropTypes.string,
-  image: React.PropTypes.function,
+  amount: React.PropTypes.number.isRequired,
+  current: React.PropTypes.number.isRequired,
+  image: React.PropTypes.string,
 };
 
 export default connect(null, null)(CampaignProgress);
