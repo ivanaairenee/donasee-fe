@@ -35,7 +35,7 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
               </div>
 
               <button className="donate">
-                Donate now
+                DONASI SEKARANG
               </button>
             </div>
           </div>

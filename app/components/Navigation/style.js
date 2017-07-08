@@ -10,7 +10,7 @@ export const NavigationElement = styled.nav`
 
   .logo {
     max-height: 100%;
-    width: 20%;
+    max-width: 40%;
   }
 
   .navbar {

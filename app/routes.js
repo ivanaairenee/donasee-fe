@@ -58,6 +58,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/dashboard',
+      name: 'dashboardPage',
+      getComponent(location, cb) {
+        import('components/DashboardPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
