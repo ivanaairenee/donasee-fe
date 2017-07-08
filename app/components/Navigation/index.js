@@ -10,6 +10,7 @@ import { push } from 'react-router-redux';
 import { NavigationElement } from './style';
 import makeSelectGlobal from '../../globalSelectors';
 import { createStructuredSelector } from 'reselect';
+import { logout } from '../../globalActions';
 
 
 class Navigation extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -27,12 +28,14 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
             <button>
               HOME
             </button>
-            <button>
+            <button onClick={() => this.props.dispatch(push('/login'))}>
               LOGIN/SIGNUP
             </button>
-            <button>
-              LOGOUT
-            </button>
+            {
+              this.props.Global.loggedIn && <button onClick={() => this.props.logout()}>
+                LOGOUT
+              </button>
+            }
           </div>
         </div>
       </NavigationElement>
@@ -53,7 +56,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     push: (url) => dispatch(push(url)),
+    logout: () => dispatch(logout()),
     dispatch,
   };
 }
-export default connect(null, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
