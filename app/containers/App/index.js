@@ -12,7 +12,9 @@
  */
 
 import React from 'react';
+import gtmParts from 'react-google-tag-manager';
 import Navigation from 'components/Navigation';
+
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -23,9 +25,22 @@ export default class App extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
+        <GoogleTagManager />
         <Navigation />
         {React.Children.toArray(this.props.children)}
       </div>
     );
+  }
+}
+
+
+export class GoogleTagManager extends React.Component {
+  render() {
+    const gtm = gtmParts({
+      id: 'GTM-KMM7S6R',
+      dataLayerName: 'dataLayer',
+    });
+
+    return gtm.scriptAsReact();
   }
 }
