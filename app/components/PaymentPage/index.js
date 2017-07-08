@@ -18,6 +18,13 @@ class PaymentPage extends React.Component { // eslint-disable-line react/prefer-
         email: '',
         noKtp: '',
       },
+      card: {
+        name:'Ricky Putra Nursalim',
+        number:'4607529394946450',
+        exp:'06/20',
+        cvc:'323',
+        zip:'11510',
+      }
     };
     this.changeInput = this.changeInput.bind(this);
   }
@@ -26,6 +33,12 @@ class PaymentPage extends React.Component { // eslint-disable-line react/prefer-
     const newInput = this.state.input;
     newInput[field] = value;
     this.setState({ input: newInput });
+  }
+
+  changeInputCard = (field, value) => {
+    const newCard = this.state.card;
+    newInput[field] = value;
+    this.setState({ card: newCard });
   }
 
   render() {
@@ -53,11 +66,11 @@ class PaymentPage extends React.Component { // eslint-disable-line react/prefer-
             <input className="inputText" type="text" value={this.state.input.noKtp} onChange={(evt) => this.changeInput('noKtp', evt.target.value)} />
           </div>
           <h2>Informasi Kartu</h2>
-          <input className="inputText" type="text" placeholder="Name on Card" value="Ricky Putra Nursalim" />
-          <input className="inputText" type="text" placeholder="Card Number" value="4607529394946450" />
-          <input className="inputText" type="text" placeholder="EXP:MM/YY" value="06/20" />
-          <input className="inputText" type="text" placeholder="CVC" value="323" />
-          <input className="inputText" type="text" placeholder="ZIP/Postal Code" value="11510" />
+          <input className="inputText" type="text" placeholder="Name on Card" value={this.state.card.name} onChange={(evt) => this.changeInputCard('name', evt.target.value)} />
+          <input className="inputText" type="text" placeholder="Card Number" value={this.state.card.number} onChange={(evt) => this.changeInputCard('number', evt.target.value)} />
+          <input className="inputText" type="text" placeholder="EXP:MM/YY" value={this.state.card.exp} onChange={(evt) => this.changeInputCard('exp', evt.target.value)} />
+          <input className="inputText" type="text" placeholder="CVC" value={this.state.card.cvc} onChange={(evt) => this.changeInputCard('cvc', evt.target.value)} />
+          <input className="inputText" type="text" placeholder="ZIP/Postal Code" value={this.state.card.zip} onChange={(evt) => this.changeInputCard('zip', evt.target.value)} />
           <div className="donate"><button>DONATE</button></div>
         </PaymentElement>
       </div>
