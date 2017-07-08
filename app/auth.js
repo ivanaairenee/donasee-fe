@@ -25,9 +25,12 @@ const auth = {
       .send({ email, password })
       .then((response) => {
         localStorage.token = response.body.token;
-        //alert("tokeenn222: " + response.body.token);
         request.set('Authorization', `JWT ${response.body.token}`);
+        console.log('pas lg call', localStorage);
         return Promise.resolve(true);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   },
 

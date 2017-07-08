@@ -47,7 +47,7 @@ export function* authorize({ email, password, isRegistering, community_name, adm
     } else {
       response = yield call(auth.login, email, password);
     }
-
+    console.log('masih aman', response);
     return response;
   } catch (error) {
     // If we get an error we send Redux the appropiate action and return
@@ -129,13 +129,12 @@ export function* fetchLogin() {
   yield put({ type: SENDING_REQUEST, sending: true });
 
   try {
-    //const response = yield call(auth.getUserData);
-    //yield put({ type: SET_USER, data: response.body });
+    const response = yield call(auth.getUserData);
+    yield put({ type: SET_USER, data: response.body });
     yield put({ type: SENDING_REQUEST, sending: false });
 
     return response;
   } catch (error) {
-    //alert("masukkk error fetchhhh");
     yield put({ type: LOGOUT });
     yield put({ type: REQUEST_ERROR, error: error.message });
 
@@ -154,8 +153,8 @@ export function* loginFlow() {
   while (true) {
     // And we're listening for `LOGIN_REQUEST` actions and destructuring its payload
     const request = yield take(LOGIN_REQUEST);
-
     const { email, password } = request.data;
+
     // A `LOGOUT` action may happen while the `authorize` effect is going on, which may
     // lead to a race condition. This is unlikely, but just in case, we call `race` which
     // returns the "winner", i.e. the one that finished first
@@ -169,7 +168,6 @@ export function* loginFlow() {
       // ...we send Redux appropiate actions
       yield put({ type: SET_AUTH, newAuthState: true }); // User is logged in (authorized)
       yield put({ type: FETCH_LOGIN });
-      yield put({ type: SET_USER, data: response.body.user });
       yield put(push('/dashboard')); // Go to dashboard page
     }
   }
