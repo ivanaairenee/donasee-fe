@@ -16,6 +16,8 @@ import {
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
+  DEFAULT_ACTION,
+  FETCH_CAMPAIGNS,
 } from './globalConstants';
 
 /**
@@ -106,3 +108,21 @@ export function requestError(error) {
 export function clearError() {
   return { type: CLEAR_ERROR };
 }
+
+/**
+ * Tells the app to fetch all available campaigns 
+ */
+export function fetchAllCampaigns(data) {
+	return {
+		type: FETCH_CAMPAIGNS,
+		data,
+	}
+}
+
+export function defaultAction() {
+  return {
+    type: DEFAULT_ACTION,
+  };
+}
+
+
