@@ -9,11 +9,9 @@ const selectGlobalDomain = () => (state) => state.get('global');
  * Other specific selectors
  */
 
-
 /**
  * Default selector used by Dashboard
  */
-
 const makeSelectGlobal = () => createSelector(
   selectGlobalDomain(),
   (substate) => substate.toJS()

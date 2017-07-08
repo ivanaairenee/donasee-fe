@@ -114,6 +114,10 @@ export const CampaignPageElement = styled.div`
     border-radius: 1rem;
     box-shadow: 0 6px 15px rgba(36,37,38,0.08);
 
+    .donation {
+      margin: 2rem 0;
+    }
+
     @media screen and (max-width: 64em){
       width: auto;
       margin: 0 2rem;

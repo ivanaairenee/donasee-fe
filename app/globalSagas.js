@@ -3,10 +3,11 @@
 // which listen for actions.
 
 // Sagas help us gather all our side effects (network requests in this case) in one place
-
+import request, { API_PREFIX } from 'request';
 import { browserHistory } from 'react-router';
 import { push } from 'react-router-redux';
 import { take, call, put, fork, race } from 'redux-saga/effects';
+import { getAllCampaigns } from 'api';
 import swal from 'sweetalert';
 import auth from 'auth';
 
@@ -21,7 +22,10 @@ import {
   LOGOUT,
   FETCH_LOGIN,
   REQUEST_ERROR,
+  FETCH_CAMPAIGNS,
 } from 'globalConstants';
+
+import { fetchAllCampaigns } from 'globalActions';
 
 /**
  * Effect to handle authorization
@@ -249,6 +253,7 @@ export function* forgetPasswordFlow() {
  * Confirm Forget Password saga
  *
  */
+
 export function* confirmForgetPasswordFlow() {
   while (true) {
     const request = yield take(CONFIRM_FORGET_PASSWORD_REQUEST);
@@ -272,6 +277,23 @@ export function* confirmForgetPasswordFlow() {
   }
 }
 
+export function* getCampaigns() {
+  yield put({ type: SENDING_REQUEST, sending: true });
+
+  try {
+    const response = yield call(getAllCampaigns);
+    yield put({ type: FETCH_CAMPAIGNS, data: response.body });
+    yield put({ type: SENDING_REQUEST, sending: false });
+
+    return response;
+  } catch (error) {
+    yield put({ type: REQUEST_ERROR, error: error.message });
+
+    return false;
+  }
+}
+
+
 // The root saga is what we actually send to Redux's middleware. In here we fork
 // each saga so that they are all "active" and listening.
 // Sagas are fired once at the start of an app and can be thought of as processes running
@@ -283,6 +305,7 @@ export default function* root() {
   yield fork(forgetPasswordFlow);
   yield fork(confirmForgetPasswordFlow);
   yield fork(fetchLoginFlow);
+  yield fork(getCampaigns);
 }
 
 // Little helper function to abstract going to different pages

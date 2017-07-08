@@ -22,7 +22,7 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('components/CampaignPage'),
+          import('containers/HomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -70,6 +70,14 @@ export default function createRoutes(store) {
       name: 'paymentPage',
       getComponent(location, cb) {
         import('components/PaymentPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/dashboard/new',
+      name: 'createCampaign',
+      getComponent(location, cb) {
+        import('components/CreateCampaign')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

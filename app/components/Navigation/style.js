@@ -28,6 +28,11 @@ export const NavigationElement = styled.nav`
       text-align: right;
       font-weight: 700;
 
+      .home {
+        color: #646464;
+        text-decoration: none;
+      }
+
       .campaign {
         button {
           font-family:'Open Sans';
@@ -72,6 +77,8 @@ export const NavigationElement = styled.nav`
           transition: color 0.25s ease-out;
         }
       }
+
+
     }
 
   }
