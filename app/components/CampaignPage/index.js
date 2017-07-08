@@ -8,8 +8,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
+import { Line } from 'rc-progress';
 import { CampaignPageElement } from './style';
-
+import placeholder1 from 'assets/placeholdersickman.png';
 
 class CampaignPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -22,9 +23,20 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
               Campaign oleh Gereja GKI Pengampon
             </h3>
             <div className="content">
-              <h1>
-                OK
-              </h1>
+              <span className="logo">
+                <img src={placeholder1}/>
+              </span>
+              <h2>
+                Rp. 50.000.000
+              </h2>
+              <div>
+                <Line percent="70" strokeWidth="7" strokeColor="#94DCD2" className="line"/>  
+                <h3> Terkumpul Rp. 35.000.000 </h3>
+              </div>
+
+              <button className="donate">
+                Donate now
+              </button>
             </div>
           </div>
           <div className="campaign-body">

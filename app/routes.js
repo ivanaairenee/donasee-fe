@@ -22,7 +22,7 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage'),
+          import('components/CampaignPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -49,6 +49,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    },
+    }, 
   ];
 }
