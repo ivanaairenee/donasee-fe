@@ -6122,6 +6122,10 @@ react-dom@15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
+react-google-tag-manager@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-google-tag-manager/-/react-google-tag-manager-2.1.0.tgz#3857792875a47dc9c4738e2bde34483c421d0369"
+
 react-helmet@3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-3.2.2.tgz#1fc4646cbc5d26246ab45d5a84b504ed639810e6"
@@ -7533,10 +7537,6 @@ watchpack@^1.0.0:
     async "2.0.0-rc.4"
     chokidar "^1.4.3"
     graceful-fs "^4.1.2"
-
-webfontloader@^1.6.28:
-  version "1.6.28"
-  resolved "https://registry.yarnpkg.com/webfontloader/-/webfontloader-1.6.28.tgz#db786129253cb6e8eae54c2fb05f870af6675bae"
 
 webidl-conversions@^3.0.0, webidl-conversions@^3.0.1:
   version "3.0.1"

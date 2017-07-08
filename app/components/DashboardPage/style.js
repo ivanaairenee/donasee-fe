@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DashboardPageElement = styled.div`
-	margin: auto;	
+	margin: auto;
 	width: calc(100% - 20rem);
 	display: flex;
 	justify-content: center;

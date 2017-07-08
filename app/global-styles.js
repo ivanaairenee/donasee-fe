@@ -12,6 +12,35 @@ injectGlobal`
     overflow-x: hidden;
   }
 
+  h1 {
+      margin-top: 1rem 0 0 0;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #646464;
+  }
+
+  h2 {
+    color: #646464;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #646464;
+    font-weight:300;
+  }
+
+  h4 {
+    font-family: 'Open Sans';
+    margin: 0;
+    font-size: 0.7rem;
+    color: #646464;
+    font-weight:300;
+    text-align: left;
+    margin: 0.5rem 0 0 0.5rem;
+  }
   body {
     font-family: 'Montserrat';
   }

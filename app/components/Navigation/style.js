@@ -29,6 +29,8 @@ export const NavigationElement = styled.nav`
 
       .campaign {
         button {
+          font-family:'Open Sans';
+          font-weight: 700;
           font-size: 0.9rem;
           margin: 0 0.9rem;
           font-weight: 700;
@@ -51,6 +53,8 @@ export const NavigationElement = styled.nav`
       }
 
       button {
+        font-family:'Open Sans';
+        font-weight: 700;
         font-size: 0.9rem;
         margin: 0 1rem;
         font-weight: 700;
