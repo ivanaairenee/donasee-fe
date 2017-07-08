@@ -13,11 +13,11 @@ injectGlobal`
   }
 
   body {
-    font-family: sans-serif;
+    font-family: 'Montserrat';
   }
 
   body.fontLoaded {
-    font-family: 'Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Montserrat','Quicksand', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
