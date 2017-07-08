@@ -41,6 +41,17 @@ injectGlobal`
     text-align: left;
     margin: 0.5rem 0 0 0.5rem;
   }
+
+  input {
+    width: 20rem;
+    background: #fafafa;
+    border: 1px solid #dedede;
+    height: 2.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 15px #dedede;
+  }
+
   body {
     font-family: 'Montserrat';
   }
