@@ -15,7 +15,7 @@ export const CampaignPageElement = styled.div`
   }
 
   .campaign {
-    width: 80%;
+    width: 75%;
 
     .campaign-headers {
       margin: 2rem;
@@ -26,8 +26,32 @@ export const CampaignPageElement = styled.div`
       
       .content {
         display: flex;
-        margin: 1rem 0 1rem;
-        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        align-contents: center;
+
+       .logo {
+          margin: auto;
+
+          img {
+            height: 10rem;
+            border-radius: 10rem;
+            margin: 2rem;
+          }
+        }
+
+        .line {
+          width: 20rem;
+          margin: 1rem 0;
+        }
+
+        .donate {
+          margin: 1rem 0;
+          padding: 0.5rem;
+          border-radius: 1rem;
+          background: #ff5a5f;
+          color: #fafafa;
+        }
       }
     }
 
@@ -46,7 +70,8 @@ export const CampaignPageElement = styled.div`
   }
 
   .donors {
-    width: 20%;
+    width: 25%;
+    height: auto;
     margin: 2rem 0 2rem;
     padding: 1rem;
     background: #FAFAFA;
