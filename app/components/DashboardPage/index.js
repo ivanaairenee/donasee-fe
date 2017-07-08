@@ -27,16 +27,17 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
           <div className="content">
             <h1> Progress Campaign </h1>
             <CampaignProgress
-              title='Donasi Biaya Operasi Cardiac Bypass Bapak Phillip Susanto'
-              amount='Rp. 50.000.000'
-              current='Rp. 35.000.000'
+              title="Donasi Biaya Operasi Cardiac Bypass Bapak Phillip Susanto"
+              amount="Rp. 50.000.000"
+              current="Rp. 35.000.000"
               image={placeholder}
             />
             <CampaignProgress
-              title='Donasi Sumbangan Uang Sekolah Laurentia Ronda'
-              amount='Rp. 60.000.000'
-              current='Rp. 30.000.000'
-              image={placeholder1}/>
+              title="Donasi Sumbangan Uang Sekolah Laurentia Ronda"
+              amount="Rp. 60.000.000"
+              current="Rp. 30.000.000"
+              image={placeholder1}
+            />
           </div>
         </div>
       </DashboardPageElement>

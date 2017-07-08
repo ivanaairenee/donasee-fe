@@ -54,6 +54,7 @@ injectGlobal`
     border-radius: 1rem;
     box-shadow: 0 6px 15px #dedede;
   }
+
   textarea {
     outline: 0;
     width: 20rem;
@@ -67,6 +68,10 @@ injectGlobal`
     border-radius: 1rem;
     box-shadow: 0 6px 15px #dedede;
     min-height:5rem;
+  }
+
+  button {
+    outline: 0;
   }
 
   body {
