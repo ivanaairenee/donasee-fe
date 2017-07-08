@@ -19,9 +19,7 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
       <DashboardPageElement>
         <div className="dashboard">
           <div className="profile">
-            <h1> Gereja GBI Pengampon </h1>
-            <h3> gbi_pengampon@gmail.com </h3>
-            <h3> 084671936820 </h3>
+            <h1> Gereja GBI Pengampon </h1><hr />
             <h2> Verified </h2>
           </div>
           <div className="content">

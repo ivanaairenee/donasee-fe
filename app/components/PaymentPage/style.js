@@ -8,7 +8,13 @@ export const PaymentElement = styled.div`
   align-items: center;
   background: #fafafa;
   border-radius: 1rem;
+  padding: 1rem;
   box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+
+  @media screen and (max-width: 64em){
+    width: 95%;
+  }
+
   .title {
     display: flex;
     flex-direction: column;
@@ -24,7 +30,7 @@ export const PaymentElement = styled.div`
       margin: 0 0.9rem;
       font-weight: 700;
       background: #ff5a5f;
-      padding: 0.8rem 1rem;
+      padding: 0.8rem 2rem;
       border-radius: 1.5rem;
       color: #fafafa;
       margin: 2rem 0;

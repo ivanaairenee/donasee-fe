@@ -5,11 +5,27 @@ export const CampaignProgressElement = styled.div`
       display: flex;
       margin: 2rem 0 1rem;
 
+      @media screen and (max-width: 64rem){
+        margin: 1rem 0 1rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
       .campaign-logo {
         img {
           height: 7.5rem;
+          width: 7.5rem;
           border-radius: 7.5rem;
           margin: 0 2rem 0;
+          object-fit: cover;
+
+          @media screen and (max-width: 64em){
+            height: 5rem;
+            width: 5rem;
+            border-radius: 5rem;
+            margin: 0 1rem 0;
+          }
         }
       }
 
@@ -35,9 +51,11 @@ export const CampaignProgressElement = styled.div`
 			  }
 
 			  .green {
+          font-family: 'Open Sans';
 			    color: #fafafa;
 			    background: #007A87;
-			    
+          font-weight: 700;
+
 			    &:hover {
 			      color: #007A87;
 			      background: #fafafa;
@@ -46,8 +64,10 @@ export const CampaignProgressElement = styled.div`
 			  }
 
 			  .red {
+          font-family: 'Open Sans';
 			    color: #fafafa;
 			    background: #FF5A5F;
+          font-weight: 700;
 
 			    &:hover {
 			      color: #FF5A5F;
@@ -69,6 +89,13 @@ export const CampaignProgressElement = styled.div`
 
         .line {
           width: 40rem;
+
+          @media screen and (max-width: 64em){
+            width: 30rem;
+          }
+          @media screen and (max-width: 40em){
+            width: 15rem;
+          }
         }
       }
     }

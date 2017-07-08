@@ -41,6 +41,10 @@ injectGlobal`
     margin: 0.5rem 0 0.2rem 0.5rem;
   }
 
+  hr {
+    border-top: 1px dashed #dedede;
+  }
+
   input {
     outline: 0;
     width: 20rem;
