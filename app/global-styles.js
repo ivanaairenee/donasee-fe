@@ -46,6 +46,9 @@ injectGlobal`
     width: 20rem;
     background: #fafafa;
     border: 1px solid #dedede;
+    font-size: 0.7rem;
+    color: #646464;
+    font-family: 'Open Sans';
     height: 2.5rem;
     padding: 1rem;
     border-radius: 1rem;
