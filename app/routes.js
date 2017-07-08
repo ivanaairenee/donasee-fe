@@ -66,6 +66,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/donate',
+      name: 'paymentPage',
+      getComponent(location, cb) {
+        import('components/PaymentPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

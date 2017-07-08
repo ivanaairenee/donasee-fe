@@ -26,7 +26,6 @@ const auth = {
       .then((response) => {
         localStorage.token = response.body.token;
         request.set('Authorization', `JWT ${response.body.token}`);
-        console.log('pas lg call', localStorage);
         return Promise.resolve(true);
       })
       .catch((error) => {

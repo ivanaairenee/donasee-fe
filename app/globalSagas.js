@@ -47,7 +47,7 @@ export function* authorize({ email, password, isRegistering, community_name, adm
     } else {
       response = yield call(auth.login, email, password);
     }
-    console.log('masih aman', response);
+
     return response;
   } catch (error) {
     // If we get an error we send Redux the appropiate action and return

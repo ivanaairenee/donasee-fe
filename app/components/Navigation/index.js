@@ -25,7 +25,7 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
                 START A CAMPAIGN
               </button>
             </div>
-            <button>
+            <button onClick={() => this.props.dispatch(push('/'))}>
               HOME
             </button>
             <button onClick={() => this.props.dispatch(push('/login'))}>
