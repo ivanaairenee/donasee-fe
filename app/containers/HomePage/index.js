@@ -10,15 +10,23 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  
+  // getCurrentContent() {
+  // 	if (window.location.pathname.toLowerCase().indexOf('login') >= 0) {
+  //     return <CampaignPage />;
+  //   } else if (window.location.pathname.toLowerCase().indexOf('forget-password/confirm') >= 0) {
+  //     return 'Confirm Forget Password';
+  //   } else if (window.location.pathname.toLowerCase().indexOf('forget-password') >= 0) {
+  //     return 'Forget Password';
+  //   }
+
+  //   return <CampaignPage />;
+  // }
+
   render() {
-    return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
-    );
+  	
   }
 }

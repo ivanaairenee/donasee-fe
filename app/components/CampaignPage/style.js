@@ -1,19 +1,12 @@
 import styled from 'styled-components';
 
 export const CampaignPageElement = styled.div`
-	margin: auto;	
-	width: calc(100% - 20rem);
-	display: flex;
-	justify-content: center;
-	align-contents: center;
-	
-	h1 {
-      flex: 1;
-      margin: 0;
-      line-height: 1.5;
-      font-size: 1.25rem;
-      font-weight: 700;
-  }
+  margin: auto; 
+  width: calc(100% - 20rem);
+  display: flex;
+  justify-content: center;
+  align-contents: center;
+  
   p {
     flex: 1;
     margin: 0;
@@ -21,40 +14,68 @@ export const CampaignPageElement = styled.div`
     line-height: 1.25;
   }
 
-	.campaign {
-		width: 80%;
+  .campaign {
+    width: 75%;
 
-		.campaign-headers {
-			margin: 2rem;
-			padding: 1rem;
-			border-radius: 0.5rem;
-			box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    .campaign-headers {
+      margin: 2rem;
+      padding: 1rem;
+      background: #FAFAFA;
+      border-radius: 1rem;
+      box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+      
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-contents: center;
 
-			.content {
-				display: flex;
-				margin: 1rem 0 1rem;
-				text-align: center;
-			}
-		}
+       .logo {
+          margin: auto;
 
-		.campaign-body {
-			margin: 2rem;
-			padding: 1rem;
-			border-radius: 0.5rem;
-			box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+          img {
+            height: 10rem;
+            border-radius: 10rem;
+            margin: 2rem;
+          }
+        }
 
-			.content {
-				margin: 1rem 0 1rem;
-				text-align: justify;
-			}
-		}
-	}
+        .line {
+          width: 20rem;
+          margin: 1rem 0;
+        }
 
-	.donors {
-		width: 20%;
-		margin: 2rem 0 2rem;
-		padding: 1rem;
-		border-radius: 0.5rem;
-		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-	}
+        .donate {
+          margin: 1rem 0;
+          padding: 0.5rem;
+          border-radius: 1rem;
+          background: #ff5a5f;
+          color: #fafafa;
+        }
+      }
+    }
+
+    .campaign-body {
+      margin: 2rem;
+      padding: 1rem;
+      background: #FAFAFA;
+      border-radius: 1rem;
+      box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+
+      .content {
+        margin: 1rem 0 1rem;
+        text-align: justify;
+      }
+    }
+  }
+
+  .donors {
+    width: 25%;
+    height: auto;
+    margin: 2rem 0 2rem;
+    padding: 1rem;
+    background: #FAFAFA;
+    border-radius: 1rem;
+    box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+  }
 `;

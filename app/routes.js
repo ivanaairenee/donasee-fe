@@ -22,7 +22,7 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage'),
+          import('components/CampaignPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -46,6 +46,14 @@ export default function createRoutes(store) {
       name: 'signup',
       getComponent(nextState, cb) {
         import('components/SignupPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: 'create-campaign',
+      name: 'createCampaign',
+      getComponent(location, cb) {
+        import('components/CreateCampaign')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

@@ -24,6 +24,11 @@ const initialState = fromJS({
   currentlySending: false,
   userLoaded: false,
   loggedIn: auth.loggedIn(),
+  user: null,
+  isLoading: false,
+  isLoaded: false,
+  isError: null,
+  selectedCampaign: 1,
 });
 
 function globalReducer(state = initialState, action) {

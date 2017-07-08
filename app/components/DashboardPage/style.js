@@ -1,35 +1,20 @@
 import styled from 'styled-components';
 
 export const DashboardPageElement = styled.div`
-	margin: auto;	
-	width: calc(100% - 20rem);
-	display: flex;
-	justify-content: center;
-	align-contents: center;
+  margin: auto;
+  width: calc(100% - 20rem);
+  color: #646464;
 
-	h1 {
-      flex: 1;
-      margin: 0;
-      line-height: 1.5;
-      font-size: 1.25rem;
-      font-weight: 700;
+  .dashboard {
+    width: auto;
+    background: #FAFAFA;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 15px rgba(36,37,38,0.08);
+
+    .profile .content{
+      margin: 2rem;
+    }
   }
-  p {
-    flex: 1;
-    margin: 0;
-    font-size: 0.9rem;
-    line-height: 1.25;
-  }
-
-	.content {
-		margin: 2rem;
-		padding: 1rem;
-		border-radius: 0.5rem;
-		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-
-		.dashboard-nav {
-			display: flex;
-
-		}
-	}
 `;

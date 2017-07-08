@@ -6,6 +6,7 @@ export const NavigationElement = styled.nav`
   z-index: 1000;
   margin: 0 0 2rem;
   background: #fafafa;
+  border-bottom: 1px solid #dedede;
 
   .logo {
     max-height: 100%;
@@ -29,6 +30,8 @@ export const NavigationElement = styled.nav`
 
       .campaign {
         button {
+          font-family:'Open Sans';
+          font-weight: 700;
           font-size: 0.9rem;
           margin: 0 0.9rem;
           font-weight: 700;
@@ -51,6 +54,8 @@ export const NavigationElement = styled.nav`
       }
 
       button {
+        font-family:'Open Sans';
+        font-weight: 700;
         font-size: 0.9rem;
         margin: 0 1rem;
         font-weight: 700;

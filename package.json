@@ -221,6 +221,7 @@
     "ip": "1.1.4",
     "lodash": "4.17.2",
     "minimist": "1.2.0",
+    "rc-progress": "^2.2.1",
     "react": "15.4.1",
     "react-dom": "15.4.1",
     "react-google-tag-manager": "^2.1.0",

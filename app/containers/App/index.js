@@ -14,6 +14,8 @@
 import React from 'react';
 import gtmParts from 'react-google-tag-manager';
 import Navigation from 'components/Navigation';
+import PaymentPage from 'components/PaymentPage';
+import CreateCampaign from 'components/CreateCampaign';
 
 
 export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -27,7 +29,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
       <div>
         <GoogleTagManager />
         <Navigation />
-        {React.Children.toArray(this.props.children)}
+        <PaymentPage />
       </div>
     );
   }
