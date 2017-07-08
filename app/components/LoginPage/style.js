@@ -8,6 +8,8 @@ export const LoginPageElement = styled.div`
   .content {
     width: 20rem;
     z-index: 100;
+    background: #fafafa;
+    border-radius: 1rem;
     padding: 2rem 2rem 1.5rem;
     margin: 0 auto;
 

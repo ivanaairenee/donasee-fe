@@ -5,6 +5,7 @@
  */
 import React, { PropTypes } from 'react';
 import logo from 'assets/logo.png';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { NavigationElement } from './style';
@@ -26,7 +27,7 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
               </button>
             </div>
             <button>
-              HOME
+              <Link to={`/`} className="home">HOME</Link>
             </button>
             <button onClick={() => this.props.dispatch(push('/login'))}>
               LOGIN/SIGNUP

@@ -110,13 +110,13 @@ export function clearError() {
 }
 
 /**
- * Tells the app to fetch all available campaigns 
+ * Tells the app to fetch all available campaigns
  */
 export function fetchAllCampaigns(data) {
-	return {
-		type: FETCH_CAMPAIGNS,
-		data,
-	}
+  return {
+    type: FETCH_CAMPAIGNS,
+    data,
+  };
 }
 
 export function defaultAction() {
@@ -124,5 +124,3 @@ export function defaultAction() {
     type: DEFAULT_ACTION,
   };
 }
-
-

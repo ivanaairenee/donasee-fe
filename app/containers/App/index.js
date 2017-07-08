@@ -15,7 +15,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import gtmParts from 'react-google-tag-manager';
 import Navigation from 'components/Navigation';
-import PaymentPage from 'components/PaymentPage';
+import HomePage from 'containers/HomePage';
 import CreateCampaign from 'components/CreateCampaign';
 import { fetchLogin } from 'globalActions';
 import makeSelectGlobal from 'globalSelectors';
