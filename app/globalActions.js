@@ -19,6 +19,7 @@ import {
   DEFAULT_ACTION,
   FETCH_CAMPAIGNS,
   CHOOSE_CAMPAIGN,
+  CREATE_CAMPAIGN,
 } from './globalConstants';
 
 export function chooseCampaign(campaignIndex) {
@@ -123,8 +124,9 @@ export function fetchAllCampaigns() {
   };
 }
 
-export function defaultAction() {
+export function createCampaign(data) {
   return {
-    type: DEFAULT_ACTION,
-  };
+    type: CREATE_CAMPAIGN,
+    data,
+  }
 }

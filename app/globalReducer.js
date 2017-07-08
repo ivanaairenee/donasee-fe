@@ -15,8 +15,8 @@ import {
   REQUEST_ERROR,
   CLEAR_ERROR,
   FETCH_CAMPAIGNS,
-  CREATE_CAMPAIGNS,
   CHOOSE_CAMPAIGN,
+  CREATE_CAMPAIGN_SUCCESS,
 } from 'globalConstants';
 
 const initialState = fromJS({
@@ -57,6 +57,14 @@ function globalReducer(state = initialState, action) {
       return state.set('error', '');
     case FETCH_CAMPAIGNS:
       return state.set('campaigns', action.data);
+    case CREATE_CAMPAIGN_SUCCESS:
+      let newCampaigns = state.get('campaigns');
+      if(newCampaigns === null){
+        newCampaigns = [];
+      }
+      newCampaigns.push(action.data);
+      console.log(newCampaigns);
+      return state.set('campaigns', newCampaigns);
     default:
       return state;
   }

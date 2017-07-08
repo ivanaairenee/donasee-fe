@@ -7,7 +7,12 @@
 import React from 'react';
 // import styled from 'styled-components';
 import { CreateCampaignElement } from './style';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import { createStructuredSelector } from 'reselect';
 
+import { createCampaign } from 'globalActions';
+import makeSelectGlobal from 'globalSelectors';
 
 class CreateCampaign extends React.Component { // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
@@ -21,6 +26,16 @@ class CreateCampaign extends React.Component { // eslint-disable-line react/pref
       },
     };
     this.changeInput = this.changeInput.bind(this);
+  }
+
+  onSubmit() {
+    const data = {title: this.state.input.title,
+                  money_needed: this.state.input.moneyNeeded,
+                  description: this.state.input.description,
+                  image: this.state.input.image,
+                  user: this.props.Global.user.id
+                }
+    this.props.createCampaign(data);
   }
 
   changeInput = (field, value) => {
@@ -49,7 +64,7 @@ class CreateCampaign extends React.Component { // eslint-disable-line react/pref
           <h4>Link Picture</h4>
           <input type="text" value={this.state.input.image} onChange={(evt) => this.changeInput('image', evt.target.value)} />
         </div>
-        <div className="create"><button>CREATE CAMPAIGN</button></div>
+        <div className="create"><button onClick={() => this.onSubmit()}>CREATE CAMPAIGN</button></div>
       </CreateCampaignElement>
     );
   }
@@ -59,4 +74,17 @@ CreateCampaign.propTypes = {
 
 };
 
-export default CreateCampaign;
+const mapStateToProps = createStructuredSelector({
+  Global: makeSelectGlobal(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    push: (url) => dispatch(push(url)),
+    createCampaign: (data) =>
+      dispatch(createCampaign(data)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCampaign);

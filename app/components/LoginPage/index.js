@@ -56,7 +56,7 @@ export class LoginPage extends React.Component {
   getCurrentContent() {
     return (
       <div className="currentContent">
-        <div>Username</div>
+        <div>Email</div>
         <input
           type="text"
           placeholder="Email Address"

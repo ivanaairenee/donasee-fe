@@ -7,7 +7,11 @@ import request, { API_PREFIX } from 'request';
 import { browserHistory } from 'react-router';
 import { push } from 'react-router-redux';
 import { take, call, put, fork, race } from 'redux-saga/effects';
-import { getAllCampaigns } from 'api';
+import {
+  getAllCampaigns,
+  createCampaign,
+} from 'api';
+
 import swal from 'sweetalert';
 import auth from 'auth';
 
@@ -23,9 +27,10 @@ import {
   FETCH_LOGIN,
   REQUEST_ERROR,
   FETCH_CAMPAIGNS,
+  CREATE_CAMPAIGN,
+  CREATE_CAMPAIGN_SUCCESS,
 } from 'globalConstants';
 
-import { fetchAllCampaigns } from 'globalActions';
 
 /**
  * Effect to handle authorization
@@ -302,6 +307,41 @@ export function* getCampaignsWatcher() {
 }
 
 
+export function* createCampaignFlow(data) {
+  yield put({ type: SENDING_REQUEST, sending: true});
+  try {
+    console.log(data);
+    const response = yield call(createCampaign, data);
+    console.log(response.body);
+    yield put({ type: CREATE_CAMPAIGN_SUCCESS, data: response.body});
+    yield put({ type: SENDING_REQUEST, sending: false});
+
+    return response;
+  } catch (error) {
+    yield put({ type: REQUEST_ERROR, error: error.message });
+    swal('Error!', error.response.body.detail, 'error');
+    return false;
+  }
+}
+
+export function* createCampaignWatcher(){
+  while (true) {
+    const request = yield take(CREATE_CAMPAIGN);
+
+    const wasSuccessful = yield call(createCampaignFlow, request.data);
+    if (wasSuccessful) {
+      swal({
+        title: 'Success',
+        text: 'Your campaign have been started, Good Luck!',
+        type: 'success',
+      }, () => {
+        forwardTo('/dashboard');
+      });
+    }
+  }
+}
+
+
 // The root saga is what we actually send to Redux's middleware. In here we fork
 // each saga so that they are all "active" and listening.
 // Sagas are fired once at the start of an app and can be thought of as processes running
@@ -314,6 +354,7 @@ export default function* root() {
   yield fork(confirmForgetPasswordFlow);
   yield fork(fetchLoginFlow);
   yield fork(getCampaignsWatcher);
+  yield fork(createCampaignWatcher);
 }
 
 // Little helper function to abstract going to different pages

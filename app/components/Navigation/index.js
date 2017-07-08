@@ -22,12 +22,12 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
           <img src={logo} className="logo" alt="Logo" />
           <div className="menu">
             <div className="campaign">
-              <button className="campaign">
+              <button className="campaign" onClick={() => this.props.dispatch(push('/dashboard/new'))}>
                 START A CAMPAIGN
               </button>
             </div>
-            <button>
-              <Link to={`/`} className="home">HOME</Link>
+            <button onClick={() => this.props.dispatch(push('/'))}>
+              HOME
             </button>
             {
               this.props.Global.loggedIn && <button onClick={() => this.props.dispatch(push('/dashboard'))}>
@@ -35,13 +35,13 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
               </button>
             }
             {
-              this.props.Global.loggedIn && <button onClick={() => this.props.logout()}>
-                LOGOUT
+              !this.props.Global.loggedIn && <button onClick={() => this.props.dispatch(push('/login'))}>
+                LOGIN/SIGNUP
               </button>
             }
             {
-              !this.props.Global.loggedIn && <button onClick={() => this.props.dispatch(push('/login'))}>
-                LOGIN/SIGNUP
+              this.props.Global.loggedIn && <button onClick={() => this.props.logout()}>
+                LOGOUT
               </button>
             }
           </div>
