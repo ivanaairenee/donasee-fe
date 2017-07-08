@@ -39,10 +39,10 @@ DashboardPage.propTypes = {
 
 
 function mapDispatchToProps(dispatch) {
-	return {
-		push: (url) => dispatch(push(url)),
-		dispatch,
-	};
+  return {
+    push: (url) => dispatch(push(url)),
+    dispatch,
+  };
 }
 
 export default connect(null, mapDispatchToProps)(DashboardPage);
