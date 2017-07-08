@@ -16,6 +16,7 @@ import {
   CLEAR_ERROR,
   FETCH_CAMPAIGNS,
   CREATE_CAMPAIGNS,
+  CHOOSE_CAMPAIGN,
 } from 'globalConstants';
 
 const initialState = fromJS({
@@ -36,6 +37,9 @@ const initialState = fromJS({
 
 function globalReducer(state = initialState, action) {
   switch (action.type) {
+    case CHOOSE_CAMPAIGN:
+      console.log(action);
+      return state.set('selectedCampaign', action);
     case SET_AUTH:
       return state.set('loggedIn', action.newAuthState);
     case SET_USER:

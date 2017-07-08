@@ -29,12 +29,19 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
             <button>
               <Link to={`/`} className="home">HOME</Link>
             </button>
-            <button onClick={() => this.props.dispatch(push('/login'))}>
-              LOGIN/SIGNUP
-            </button>
+            {
+              this.props.Global.loggedIn && <button onClick={() => this.props.dispatch(push('/dashboard'))}>
+                DASHBOARD
+              </button>
+            }
             {
               this.props.Global.loggedIn && <button onClick={() => this.props.logout()}>
                 LOGOUT
+              </button>
+            }
+            {
+              !this.props.Global.loggedIn && <button onClick={() => this.props.dispatch(push('/login'))}>
+                LOGIN/SIGNUP
               </button>
             }
           </div>

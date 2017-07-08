@@ -9,7 +9,7 @@
  * the linting exception.
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import messages from './messages';
 import CampaignPage from 'components/CampaignPage';
@@ -21,11 +21,15 @@ import { fetchAllCampaigns } from 'globalActions';
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    this.props.getAllCampaigns();
+    if (!this.props.Global.campaigns)
+      this.props.getAllCampaigns();
   }
 
   render() {
-    return <CampaignPage {...this.props.Global.campaigns}/>;
+    if (this.props.Global.campaigns)
+      return <CampaignPage campaigns={this.props.Global.campaigns}/>;
+    else
+      return <div style={{textAlign: 'center'}}><h1>Loading..</h1></div>;
   }
 }
 

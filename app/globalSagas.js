@@ -293,6 +293,14 @@ export function* getCampaigns() {
   }
 }
 
+export function* getCampaignsWatcher() {
+  while (true) {
+    const request = yield take(FETCH_CAMPAIGNS);
+
+    const wasSuccessful = yield call(getCampaigns);
+  }
+}
+
 
 // The root saga is what we actually send to Redux's middleware. In here we fork
 // each saga so that they are all "active" and listening.
@@ -305,7 +313,7 @@ export default function* root() {
   yield fork(forgetPasswordFlow);
   yield fork(confirmForgetPasswordFlow);
   yield fork(fetchLoginFlow);
-  yield fork(getCampaigns);
+  yield fork(getCampaignsWatcher);
 }
 
 // Little helper function to abstract going to different pages

@@ -18,7 +18,12 @@ import {
   CLEAR_ERROR,
   DEFAULT_ACTION,
   FETCH_CAMPAIGNS,
+  CHOOSE_CAMPAIGN,
 } from './globalConstants';
+
+export function chooseCampaign(campaignIndex) {
+  return { type: CHOOSE_CAMPAIGN, campaignIndex };
+}
 
 /**
  * Sets the authentication state of the application
@@ -112,10 +117,9 @@ export function clearError() {
 /**
  * Tells the app to fetch all available campaigns
  */
-export function fetchAllCampaigns(data) {
+export function fetchAllCampaigns() {
   return {
     type: FETCH_CAMPAIGNS,
-    data,
   };
 }
 
