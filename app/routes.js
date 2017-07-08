@@ -34,6 +34,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: 'create-campaign',
+      name: 'createCampaign',
+      getComponent(location, cb) {
+        import('components/CreateCampaign')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

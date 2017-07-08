@@ -15,12 +15,6 @@ import { DashboardPageElement } from './style';
 
 class DashboardPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    let campaign1 = {
-      title: 'Donasi Biaya Operasi Cardiac Bypass Bapak Phillip Susanto',
-      amount: 'Rp. 50.000.000',
-      current: 'Rp. 35.000.000',
-      image: placeholder,
-    }
     return (
       <DashboardPageElement>
         <div className="dashboard">
@@ -32,13 +26,13 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
           </div>
           <div className="content">
             <h1> Progress Campaign </h1>
-            <CampaignProgress 
+            <CampaignProgress
               title='Donasi Biaya Operasi Cardiac Bypass Bapak Phillip Susanto'
               amount='Rp. 50.000.000'
               current='Rp. 35.000.000'
               image={placeholder}
             />
-            <CampaignProgress 
+            <CampaignProgress
               title='Donasi Sumbangan Uang Sekolah Laurentia Ronda'
               amount='Rp. 60.000.000'
               current='Rp. 30.000.000'

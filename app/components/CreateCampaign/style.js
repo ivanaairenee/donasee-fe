@@ -1,22 +1,17 @@
 import styled from 'styled-components';
 
-export const PaymentElement = styled.div`
+export const CreateCampaignElement = styled.div`
   margin: auto;
-  width: calc(100% - 30rem);
+  width: calc(100% - 20rem);
+  background: #fafafa;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #fafafa;
-  border-radius: 1rem;
+  justify-content: center;
   box-shadow: 0 6px 15px rgba(36,37,38,0.08);
-  .title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem 0;
-  }
-  .donate {
+
+  .create {
     button {
       font-family:'Open Sans';
       font-weight: 700;
@@ -40,26 +35,5 @@ export const PaymentElement = styled.div`
         transition: background 0.25s ease-out, color 0.25s ease-out;
       }
     }
-  }
-
-  .inputText {
-    marginTop: 0.5rem;
-  }
-
-  ::-webkit-input-placeholder {
-    font-size: 0.8rem;
-    font-family: 'Open Sans';
-  }
-  :-moz-placeholder {
-    font-size: 0.8rem;
-    font-family: 'Open Sans';
-  }
-  ::-moz-placeholder {
-    font-size: 0.8rem;
-    font-family: 'Open Sans';
-  }
-  :-ms-input-placeholder {
-    font-size: 0.8rem;
-    font-family: 'Open Sans';
   }
 `;

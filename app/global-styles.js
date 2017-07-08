@@ -34,15 +34,15 @@ injectGlobal`
 
   h4 {
     font-family: 'Open Sans';
-    margin: 0;
     font-size: 0.7rem;
     color: #646464;
     font-weight:300;
     text-align: left;
-    margin: 0.5rem 0 0 0.5rem;
+    margin: 0.5rem 0 0.2rem 0.5rem;
   }
 
   input {
+    outline: 0;
     width: 20rem;
     background: #fafafa;
     border: 1px solid #dedede;
@@ -53,6 +53,20 @@ injectGlobal`
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 6px 15px #dedede;
+  }
+  textarea {
+    outline: 0;
+    width: 20rem;
+    background: #fafafa;
+    border: 1px solid #dedede;
+    font-size: 0.7rem;
+    color: #646464;
+    font-family: 'Open Sans';
+    height: 2.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 15px #dedede;
+    min-height:5rem;
   }
 
   body {

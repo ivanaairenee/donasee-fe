@@ -6,6 +6,7 @@ export const NavigationElement = styled.nav`
   z-index: 1000;
   margin: 0 0 2rem;
   background: #fafafa;
+  border-bottom: 1px solid #dedede;
 
   .logo {
     max-height: 100%;
