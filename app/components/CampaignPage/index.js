@@ -25,8 +25,8 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
       return (
         <div>
           {
-            donations.map((donation) => (
-              <div className='donation'>
+            donations.map((donation, idx) => (
+              <div className='donation' key={ idx }>
                 <h3>{ donation.name }</h3>
                 <h3>{ donation.amount }</h3>
               </div>
@@ -42,8 +42,8 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
     return (
         <div>
         {
-          campaigns.map((campaign) => (
-            <CampaignPageElement>
+          campaigns.map((campaign, index) => (
+            <CampaignPageElement key={ index }>
               <div className="campaign">
                 <div className="campaign-headers">
                   <h1> {campaign.title} </h1>

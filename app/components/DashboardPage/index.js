@@ -22,15 +22,19 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
 
   render() {
     const { user, campaigns } = this.props.Global;
-    const userCampaigns = campaigns.filter((campaign) => campaign.user === user.id).map((campaign) => (
-                  <CampaignProgress
-                      title={ campaign.title }
-                      amount={ campaign.money_needed }
-                      current={ campaign.donations.map((donation) => donation.amount).reduce((a, b) => a + b , 0) }
-                      image={ campaign.image }
-                    />
-                  )
-                );
+    const used = campaigns ? campaings : user ? user.campaigns : [];
+    let userCampaigns = '';
+    if (used)
+      userCampaigns = used.filter((campaign) => campaign.user === user.id).map((campaign, idx) => (
+                    <CampaignProgress
+                        key={ idx }
+                        title={ campaign.title }
+                        amount={ campaign.money_needed }
+                        current={ campaign.donations.map((donation) => donation.amount).reduce((a, b) => a + b , 0) }
+                        image={ campaign.image }
+                      />
+                    )
+                  );
     if (this.props.Global && !isEmpty(this.props.Global.user))
       return (
         <DashboardPageElement>
@@ -47,6 +51,8 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
           </div>
         </DashboardPageElement>
       );
+    else if (this.props.Global.currentlySending)
+      return <div style={{textAlign: 'center'}}><h1>Loading..</h1></div>;
     else
       return (<div style={{textAlign: 'center'}}>You should <Link to={`/login`}>log in</Link></div>);
   }
