@@ -34,6 +34,22 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/login',
+      name: 'login',
+      getComponent(nextState, cb) {
+        import('components/LoginPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/signup',
+      name: 'signup',
+      getComponent(nextState, cb) {
+        import('components/SignupPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: 'create-campaign',
       name: 'createCampaign',
       getComponent(location, cb) {
@@ -49,6 +65,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    }, 
+    },
   ];
 }
