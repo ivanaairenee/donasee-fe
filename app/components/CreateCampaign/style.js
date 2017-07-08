@@ -11,6 +11,10 @@ export const CreateCampaignElement = styled.div`
   justify-content: center;
   box-shadow: 0 6px 15px rgba(36,37,38,0.08);
 
+  @media screen and (max-width: 64em){
+    width: 95%;
+  }
+
   .create {
     button {
       font-family:'Open Sans';

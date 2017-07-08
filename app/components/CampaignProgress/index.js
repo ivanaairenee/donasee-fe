@@ -16,7 +16,7 @@ class CampaignProgress extends React.Component { // eslint-disable-line react/pr
       <CampaignProgressElement>
         <div className="campaign">
           <span className="campaign-logo">
-            <img src = {this.props.image} alt="Campaign Logo" className="img-circle"/>
+            <img src = {this.props.image} alt="Campaign Logo" />
           </span>
           <div className="campaign-progress">
             <h2> {this.props.title} </h2>
@@ -28,10 +28,10 @@ class CampaignProgress extends React.Component { // eslint-disable-line react/pr
                   <p className="collected"> Terkumpul { `Rp. ${this.props.current}` }</p>
                   <div className="action">
                     <button className="green">
-                      Edit
+                      EDIT
                     </button>
                     <button className="red">
-                      Delete
+                      DELETE
                     </button>
                   </div>
                 </div>
