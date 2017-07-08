@@ -24,6 +24,7 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     return (
       <div>
         <Navigation />
+        {React.Children.toArray(this.props.children)}
       </div>
     );
   }
