@@ -21,8 +21,8 @@ import { Link } from 'react-router';
 class DashboardPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    const user = this.props.Global.user;
-    const campaigns = user ? user.campaigns ? user.campaigns.map((campaign) => (
+    const { user, campaigns } = this.props.Global;
+    const userCampaigns = campaigns.filter((campaign) => campaign.user === user.id).map((campaign) => (
                   <CampaignProgress
                       title={ campaign.title }
                       amount={ campaign.money_needed }
@@ -30,7 +30,7 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
                       image={ campaign.image }
                     />
                   )
-                ) : '' : '';
+                );
     if (this.props.Global && !isEmpty(this.props.Global.user))
       return (
         <DashboardPageElement>
@@ -42,7 +42,7 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
             </div>
             <div className="content">
               <h1> Progress Campaign </h1>
-              { campaigns }
+              { userCampaigns }
             </div>
           </div>
         </DashboardPageElement>
