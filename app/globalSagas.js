@@ -7,7 +7,7 @@ import request, { API_PREFIX } from 'request';
 import { browserHistory } from 'react-router';
 import { push } from 'react-router-redux';
 import { take, call, put, fork, race } from 'redux-saga/effects';
-import { getAllCampaigns } from 'api';
+import { getAllCampaigns, postMakeDonations } from 'api';
 import swal from 'sweetalert';
 import auth from 'auth';
 
@@ -23,6 +23,7 @@ import {
   FETCH_LOGIN,
   REQUEST_ERROR,
   FETCH_CAMPAIGNS,
+  MAKE_DONATIONS,
 } from 'globalConstants';
 
 import { fetchAllCampaigns } from 'globalActions';
@@ -301,6 +302,41 @@ export function* getCampaignsWatcher() {
   }
 }
 
+export function* makeDonations(data) {
+  yield put({ type: SENDING_REQUEST, sending: true });
+
+  try {
+    const response = yield call(postMakeDonations, data);
+    yield put({ type: MAKE_DONATIONS, data: response.body });
+    yield put({ type: SENDING_REQUEST, sending: false });
+
+    return response;
+  } catch (error) {
+    yield put({ type: REQUEST_ERROR, error: error.message });
+
+    return false;
+  }
+}
+
+export function* makeDonationsWatcher() {
+  while (true) {
+    const request = yield take(MAKE_DONATIONS);
+
+    const data = request.data;
+    const response = yield call(makeDonations, data);
+
+    if (response) {
+      swal({
+        title: 'Success',
+        text: 'Donation has been send successfully!',
+        type: 'success',
+      }, () => {
+        forwardTo('/');
+      });
+    }
+  }
+}
+
 
 // The root saga is what we actually send to Redux's middleware. In here we fork
 // each saga so that they are all "active" and listening.
@@ -314,6 +350,7 @@ export default function* root() {
   yield fork(confirmForgetPasswordFlow);
   yield fork(fetchLoginFlow);
   yield fork(getCampaignsWatcher);
+  yield fork(makeDonationsWatcher);
 }
 
 // Little helper function to abstract going to different pages

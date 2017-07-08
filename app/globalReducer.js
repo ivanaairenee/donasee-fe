@@ -17,6 +17,7 @@ import {
   FETCH_CAMPAIGNS,
   CREATE_CAMPAIGNS,
   CHOOSE_CAMPAIGN,
+  MAKE_DONATIONS,
 } from 'globalConstants';
 
 const initialState = fromJS({
@@ -37,9 +38,17 @@ const initialState = fromJS({
 
 function globalReducer(state = initialState, action) {
   switch (action.type) {
+    case MAKE_DONATIONS:
+      let upd = action.data;
+      upd['amount'] = parseInt(upd['amount']);
+      const list = state.get('campaigns');
+      const index = list.findIndex(c => c.id === action.data.campaign);
+      const currCampaign = list[index];
+      currCampaign.donations.push(upd);
+      list.splice(index, 1, currCampaign);
+      return state.set('campaigns', list);
     case CHOOSE_CAMPAIGN:
-      console.log(action);
-      return state.set('selectedCampaign', action);
+      return state.set('selectedCampaign', action.campaignIndex);
     case SET_AUTH:
       return state.set('loggedIn', action.newAuthState);
     case SET_USER:
