@@ -22,6 +22,7 @@ export class SignupPage extends React.Component {
       community_name: '',
       admin_name: '',
       docs_link: '',
+      password: '',
       validation: {
         email: '',
         community_name: '',
@@ -53,7 +54,7 @@ export class SignupPage extends React.Component {
   onSubmit() {
     const invalid = this.validate();
     if (!invalid) {
-      this.props.registerRequest(this.state.email, this.state.community_name, this.state.admin_name, this.state.docs_link);
+      this.props.registerRequest(this.state.email, this.state.community_name, this.state.admin_name, this.state.docs_link, this.state.password);
     }
   }
 
@@ -86,6 +87,14 @@ export class SignupPage extends React.Component {
           value={this.state.email}
         />
         {this.state.validation.email && <h4 style={{ color: 'red' }}>{this.state.validation.email}</h4>}
+        <br />
+        <h4>Password</h4>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(evt) => this.onInputChange('password', evt.target.value)}
+          value={this.state.password}
+        />
         <br />
         <h4>Link Berkas Pendaftaran</h4>
         <input
@@ -177,8 +186,8 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     push: (url) => dispatch(push(url)),
-    registerRequest: (email, community_name, admin_name, docs_link) =>
-      dispatch(registerRequest({ email, community_name, admin_name, docs_link })),
+    registerRequest: (email, community_name, admin_name, docs_link, password) =>
+      dispatch(registerRequest({ email, community_name, admin_name, docs_link, password })),
   };
 }
 

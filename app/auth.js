@@ -81,15 +81,14 @@ const auth = {
   * @param  {string} email The email of the user
   * @param  {string} password The password of the user
   */
-  register(email, community_name, admin_name, docs_link) {
+  register(email, community_name, admin_name, docs_link, password) {
     // Post a fake request
-    var password = 'test123456789';
     return (
       request
         .post(`${API_PREFIX}/register/`)
         .send({
           email,
-          password: password,
+          password,
           community_name,
           admin_name,
           docs_link,

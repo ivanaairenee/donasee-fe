@@ -53,7 +53,8 @@ export function* authorize({ email, password, isRegistering, community_name, adm
     // as if it's synchronous because we pause execution until the call is done
     // with `yield`!
     if (isRegistering) {
-      response = yield call(auth.register, email, community_name, admin_name, docs_link);
+      console.log('alksjdlas', email, community_name, admin_name, docs_link, password);
+      response = yield call(auth.register, email, community_name, admin_name, docs_link, password);
     } else {
       response = yield call(auth.login, email, password);
     }
@@ -212,8 +213,7 @@ export function* registerFlow() {
   while (true) {
     // We always listen to `REGISTER_REQUEST` actions
     const request = yield take(REGISTER_REQUEST);
-    const { email, community_name, admin_name, docs_link } = request.data;
-    const password = 'password';
+    const { email, community_name, admin_name, docs_link, password } = request.data;
 
     // We call the `authorize` task with the data, telling it that we are registering a user
     // This returns `true` if the registering was successful, `false` if not
@@ -346,9 +346,7 @@ export function* makeDonationsWatcher() {
 export function* createCampaignFlow(data) {
   yield put({ type: SENDING_REQUEST, sending: true});
   try {
-    console.log(data);
     const response = yield call(createCampaign, data);
-    console.log(response.body);
     yield put({ type: CREATE_CAMPAIGN_SUCCESS, data: response.body});
     yield put({ type: SENDING_REQUEST, sending: false});
 
