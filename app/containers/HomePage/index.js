@@ -17,6 +17,7 @@ import CampaignPage from 'components/CampaignPage';
 import { createStructuredSelector } from 'reselect';
 import makeSelectGlobal from 'globalSelectors';
 import { fetchAllCampaigns } from 'globalActions';
+import Loading from 'assets/loading.gif'
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -29,7 +30,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     if (this.props.Global.campaigns)
       return <CampaignPage campaigns={this.props.Global.campaigns}/>;
     else
-      return <div style={{textAlign: 'center'}}><h1>Loading..</h1></div>;
+      return <div style={{textAlign: 'center'}}><img src={Loading} /></div>;
   }
 }
 

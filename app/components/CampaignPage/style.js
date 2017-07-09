@@ -8,7 +8,7 @@ export const CampaignPageElement = styled.div`
   align-contents: center;
 
   @media screen and (max-width: 64em){
-    width: 90%;
+    width: 100%;
   }
 
   @media screen and (max-width: 40em){
