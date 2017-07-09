@@ -24,7 +24,7 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
     const { user, campaigns } = this.props.Global;
     const used = campaigns ? campaigns : user ? user.campaigns : [];
     let userCampaigns = '';
-    if (used)
+    if (used && user)
       userCampaigns = used.filter((campaign) => campaign.user === user.id).map((campaign, idx) => (
                     <CampaignProgress
                         key={ idx }

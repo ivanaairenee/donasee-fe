@@ -65,7 +65,7 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
                       { `Rp. ${campaign.money_needed}` }
                     </h2>
                     <div>
-                      <Line percent="70" strokeWidth="7" strokeColor="#94DCD2" className="line"/>
+                      <Line percent= {(campaign.donations.map((donation) => donation.amount).reduce((a, b) => a + b , 0) / campaign.money_needed) * 100} strokeWidth="7" strokeColor="#94DCD2" className="line"/>
                       <h3> { `Terkumpul Rp. ${campaign.donations.map((donation) => donation.amount).reduce((a, b) => a + b , 0)} `}</h3>
                     </div>
 

@@ -36,7 +36,7 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
           <img src={logo} className="logo" alt="Logo" />
           <div className="menu">
             <div className="campaign">
-              <button className="campaign" onClick={() => this.props.dispatch(push('/dashboard/new'))}>
+              <button className="campaign" onClick={() => this.props.Global.loggedIn? this.props.dispatch(push('/dashboard/new')) : this.props.dispatch(push('/login'))}>
                 START A CAMPAIGN
               </button>
             </div>
