@@ -1,64 +1,43 @@
 import styled from 'styled-components';
 
 export const LoginPageElement = styled.div`
-  width: 100%;
-  position: relative;
-  padding: 0.5rem;
+  margin: auto;
+  width: calc(100% - 20rem);
+  padding: 1rem;
+  background: #fafafa;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(36,37,38,0.08);
 
-  .content {
-    width: 20rem;
-    z-index: 100;
-    background: #fafafa;
-    border-radius: 1rem;
-    padding: 2rem 2rem 1.5rem;
-    margin: 0 auto;
+  @media screen and (max-width:64em){
+    width: 95%;
+  }
 
-    h1 {
-      line-height: 1;
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 0.5rem;
-      text-transform: uppercase;
-      margin-right: -0.5rem;
-      color: ${(props) => props.theme.blue};
-    }
+  .login {
+      button {
+        font-family:'Open Sans';
+        font-weight: 700;
+        font-size: 0.9rem;
+        font-weight: 700;
+        background: #ff5a5f;
+        padding: 0.8rem 2rem;
+        border-radius: 1.5rem;
+        color: #fafafa;
+        margin: 2rem 0;
+        transition: background 0.25s ease-out, color 0.25s ease-out;
 
-    h3 {
-      line-height: 1;
-      font-size: 0.85rem;
-      color: ${(props) => props.theme.blueDarkUltra};
-    }
+        &:hover {
+        background: #fafafa;
+        padding: 0.8rem 2rem;
+        border-radius: 1.5rem;
+        color: #ff5a5f;
+        margin: 2rem 0;
+        transition: background 0.25s ease-out, color 0.25s ease-out;
 
-    input {
-      text-align: ${(props) => {
-        if (props.right) {
-          return 'right';
         }
-        return 'left';
-      }};
-      width: 100%;
-      display: block;
-      padding: 0.5rem 1rem;
-      margin-top: 0.2rem;
-      background-color: #ffffff;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 0.5rem 1rem;
-      border-radius: 3rem;
-      width: 8rem;
-      color: ${(props) => props.theme.grayDarkSuper};
-      background: ${(props) => props.theme.grayLight};
-      border: 0.2rem solid ${(props) => props.theme.blue};
-      transition: color 0.25s ease-out, background 0.25s ease-out;
-
-      &:hover,
-      &:focus {
-        color: ${(props) => props.theme.white};
-        background: ${(props) => props.theme.blueDarkUltra};
-        transition: color 0.25s ease-in, background 0.25s ease-in;
       }
     }
-  }
 `;

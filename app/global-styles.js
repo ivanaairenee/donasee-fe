@@ -45,6 +45,11 @@ injectGlobal`
     border-top: 1px dashed #dedede;
   }
 
+  a {
+    color: #ff5a5f;
+    text-decoration: none;
+  }
+
   input {
     outline: 0;
     width: 20rem;
@@ -57,6 +62,10 @@ injectGlobal`
     padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 6px 15px #dedede;
+
+    @media screen and (max-width: 40em){
+      width: 15rem;
+    }
   }
 
   textarea {

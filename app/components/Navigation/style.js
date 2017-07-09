@@ -10,7 +10,42 @@ export const NavigationElement = styled.nav`
 
   .logo {
     max-height: 100%;
-    max-width: 40%;
+    max-width: 100%;
+  }
+
+  .mobile {
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Open Sans';
+    background: #fafafa;
+
+    .campaign {
+      color: #ff5a5f;
+      width: 90%;
+      height: 2.5rem;
+      padding: 1rem;
+      font-family: 'Open Sans'
+      font-weight: 700;
+    }
+
+    .menu {
+      color: #646464;
+      width: 90%;
+      height: 2.5rem;
+      padding: 1rem;
+      font-family: 'Open Sans'
+      font-weight: 700;
+      border-top: 2px solid #dedede;
+    }
+
+    @media screen and (min-width: 41em){
+      display:none;
+    }
   }
 
   .navbar {
@@ -28,9 +63,8 @@ export const NavigationElement = styled.nav`
       text-align: right;
       font-weight: 700;
 
-      .home {
-        color: #646464;
-        text-decoration: none;
+      @media screen and (max-width: 40em){
+        display: none;
       }
 
       .campaign {
@@ -77,8 +111,6 @@ export const NavigationElement = styled.nav`
           transition: color 0.25s ease-out;
         }
       }
-
-
     }
 
   }

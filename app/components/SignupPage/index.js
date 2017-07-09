@@ -5,12 +5,12 @@
  */
 
 import React, { PropTypes } from 'react';
+import makeSelectGlobal from '../../globalSelectors';
+
+import { registerRequest } from '../../globalActions';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
-
-import { registerRequest } from '../../globalActions';
-import makeSelectGlobal from '../../globalSelectors';
 import { SignupPageElement } from './style';
 import { Link } from 'react-router';
 
@@ -60,42 +60,42 @@ export class SignupPage extends React.Component {
   getCurrentContent() {
     return (
       <div className="currentContent">
-        <div>Nama Gereja / Komunitas</div>
+        <h4>Nama Gereja / Komunitas</h4>
         <input
           type="text"
           placeholder="Nama Gereja/Komunitas"
           onChange={(evt) => this.onInputChange('community_name', evt.target.value)}
           value={this.state.community_name}
         />
-        {this.state.validation.community_name && <h3 style={{color: 'red'}}>{this.state.validation.community_name}</h3>}
-        <br/>
-        <div>Nama Lengkap Pendaftar</div>
+        {this.state.validation.community_name && <h4 style={{ color: 'red' }}>{this.state.validation.community_name}</h4>}
+        <br />
+        <h4>Nama Lengkap Pendaftar</h4>
         <input
           type="text"
           placeholder="Nama Pendaftar"
           onChange={(evt) => this.onInputChange('admin_name', evt.target.value)}
           value={this.state.admin_name}
         />
-        {this.state.validation.admin_name && <h3 style={{color: 'red'}}>{this.state.validation.admin_name}</h3>}
-        <br/>
-        <div>Alamat Email</div>
+        {this.state.validation.admin_name && <h4 style={{ color: 'red' }}>{this.state.validation.admin_name}</h4>}
+        <br />
+        <h4>Alamat Email</h4>
         <input
           type="text"
           placeholder="Alamat Email"
           onChange={(evt) => this.onInputChange('email', evt.target.value)}
           value={this.state.email}
         />
-        {this.state.validation.email && <h3 style={{color: 'red'}}>{this.state.validation.email}</h3>}
-        <br/>
-        <div>Link Berkas Pendaftaran</div>
+        {this.state.validation.email && <h4 style={{ color: 'red' }}>{this.state.validation.email}</h4>}
+        <br />
+        <h4>Link Berkas Pendaftaran</h4>
         <input
           type="text"
           placeholder="Link Berkas Pendaftaran"
           onChange={(evt) => this.onInputChange('docs_link', evt.target.value)}
           value={this.state.docs_link}
         />
-        {this.state.validation.docs_link && <h3 style={{color: 'red'}}>{this.state.validation.docs_link}</h3>}
-        <br/>
+        {this.state.validation.docs_link && <h4 style={{ color: 'red' }}>{this.state.validation.docs_link}</h4>}
+        <br />
       </div>
     );
   }
@@ -133,7 +133,7 @@ export class SignupPage extends React.Component {
     if (!this.state.docs_link) {
       invalids.docs_link = 'Document Link cannot be empty';
       invalidFlag = true;
-    } else if (!(this.state.docs_link.indexOf("http://") == 0 || this.state.docs_link.indexOf("https://") == 0)) {
+    } else if (!(this.state.docs_link.indexOf('http://') === 0 || this.state.docs_link.indexOf('https://') === 0)) {
       invalids.docs_link = 'Document Link format is invalid, need to have http:// or https://';
       invalidFlag = true;
     }
@@ -150,15 +150,12 @@ export class SignupPage extends React.Component {
 
     return (
       <SignupPageElement>
-        <div className="content">
-          <div style={{display: 'block', justifyContent: 'center', 'textAlign': 'center'}}>DAFTARKAN GEREJA/KOMUNITAS ANDA</div>
-          <div style={{display: 'block', justifyContent: 'center', 'textAlign': 'center'}}>Sudah punya akun? <Link to="/login">Login</Link></div>
-          <br/>
-          {currentContent}
-          <br/>
-          <div style={{justifyContent: 'center', 'textAlign': 'center'}}>
-            <button onClick={this.onSubmit} style={{cursor: 'pointer'}}>KIRIM</button>
-          </div>
+        <h1>DAFTARKAN GEREJA/KOMUNITAS ANDA</h1>
+        <h3>Sudah punya akun? <Link to="/login">Login</Link></h3>
+        <br />
+        {currentContent}
+        <div className="kirim">
+          <button onClick={this.onSubmit} style={{ cursor: 'pointer' }}>KIRIM</button>
         </div>
       </SignupPageElement>
     );
