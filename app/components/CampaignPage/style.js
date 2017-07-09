@@ -51,6 +51,8 @@ export const CampaignPageElement = styled.div`
 
           img {
             height: 10rem;
+            width: 10rem;
+            objectFit: cover;
             border-radius: 10rem;
             margin: 2rem;
           }
