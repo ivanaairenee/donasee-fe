@@ -56,23 +56,23 @@ export class LoginPage extends React.Component {
   getCurrentContent() {
     return (
       <div className="currentContent">
-        <div>Username</div>
+        <h4>Username</h4>
         <input
           type="text"
           placeholder="Email Address"
           onChange={(evt) => this.onInputChange('email', evt.target.value)}
           value={this.state.email}
         />
-        {this.state.validation.email && <h3 style={{color: 'red'}}>{this.state.validation.email}</h3>}
-        <br/>
-        <div>Password</div>
+        {this.state.validation.email && <h4 style={{ color: 'red' }}>{this.state.validation.email}</h4>}
+        <br />
+        <h4>Password</h4>
         <input
           type="password"
           placeholder="Password"
           onChange={(evt) => this.onInputChange('password', evt.target.value)}
           value={this.state.password}
         />
-        {this.state.validation.password && <h3 style={{color: 'red'}}>{this.state.validation.password}</h3>}
+        {this.state.validation.password && <h4 style={{ color: 'red' }}>{this.state.validation.password}</h4>}
       </div>
     );
   }
@@ -118,14 +118,10 @@ export class LoginPage extends React.Component {
 
     return (
       <LoginPageElement>
-        <div className="content">
-          <div style={{display: 'block', justifyContent: 'center', 'textAlign': 'center'}}>Belum punya akun? <Link to="/signup">Signup</Link></div>
-          <br/>
-          {currentContent}
-          <br/>
-          <div style={{justifyContent: 'center', 'textAlign': 'center'}}>
-            <button onClick={this.onSubmit} style={{cursor: 'pointer'}}>Login</button>
-          </div>
+        <h3>Belum punya akun? <Link to="/signup">Signup</Link></h3>
+        {currentContent}
+        <div className="login">
+          <button onClick={this.onSubmit} style={{ cursor: 'pointer' }}>Login</button>
         </div>
       </LoginPageElement>
     );

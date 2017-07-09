@@ -29,6 +29,10 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
             </button>
           </div>
         </div>
+        <div className="mobile">
+          <button className="campaign">START A CAMPAIGN</button>
+          <button className="menu">LOGIN/SIGNUP</button>
+        </div>
       </NavigationElement>
     );
   }

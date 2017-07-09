@@ -19,12 +19,12 @@ class PaymentPage extends React.Component { // eslint-disable-line react/prefer-
         noKtp: '',
       },
       card: {
-        name:'Ricky Putra Nursalim',
-        number:'4607529394946450',
-        exp:'06/20',
-        cvc:'323',
-        zip:'11510',
-      }
+        name: 'Ricky Putra Nursalim',
+        number: '4607529394946450',
+        exp: '06/20',
+        cvc: '323',
+        zip: '11510',
+      },
     };
     this.changeInput = this.changeInput.bind(this);
   }
@@ -37,7 +37,7 @@ class PaymentPage extends React.Component { // eslint-disable-line react/prefer-
 
   changeInputCard = (field, value) => {
     const newCard = this.state.card;
-    newInput[field] = value;
+    newCard[field] = value;
     this.setState({ card: newCard });
   }
 
