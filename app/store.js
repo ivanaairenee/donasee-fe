@@ -43,6 +43,7 @@ export default function configureStore(initialState = {}, history) {
   sagaMiddleware.run(GlobalSagas);
   store.runSaga = sagaMiddleware.run;
   store.asyncReducers = {}; // Async reducer registry
+  store.asyncSagas = new Map();
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */

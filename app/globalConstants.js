@@ -18,6 +18,7 @@ export const REQUEST_ERROR = 'app/REQUEST_ERROR';
 export const CLEAR_ERROR = 'app/CLEAR_ERROR';
 export const FETCH_CAMPAIGNS = 'app/FETCH_CAMPAIGNS';
 export const CHOOSE_CAMPAIGN = 'app/CHOOSE_CAMPAIGN';
+export const MUSTNOT_RELOAD = 'app/MUSTNOT_RELOAD';
 
 export const CREATE_CAMPAIGN = 'app/CREATE_CAMPAIGN';
 export const CREATE_CAMPAIGN_SUCCESS = 'app/CREATE_CAMPAIGN_SUCCESS';

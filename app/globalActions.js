@@ -21,7 +21,12 @@ import {
   CHOOSE_CAMPAIGN,
   CREATE_CAMPAIGN,
   MAKE_DONATIONS,
+  MUSTNOT_RELOAD,
 } from './globalConstants';
+
+export function mustnotReload() {
+  return { type: MUSTNOT_RELOAD };
+}
 
 export function chooseCampaign(campaignIndex) {
   return { type: CHOOSE_CAMPAIGN, campaignIndex };

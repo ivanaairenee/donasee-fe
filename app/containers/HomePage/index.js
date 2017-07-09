@@ -16,13 +16,21 @@ import CampaignPage from 'components/CampaignPage';
 
 import { createStructuredSelector } from 'reselect';
 import makeSelectGlobal from 'globalSelectors';
-import { fetchAllCampaigns } from 'globalActions';
+import { fetchAllCampaigns, mustnotReload } from 'globalActions';
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
     if (!this.props.Global.campaigns)
       this.props.getAllCampaigns();
+    if (this.props.Global.mustReload) {
+      this.props.dispatch(mustnotReload());
+      window.location.reload();
+    }
   }
 
   render() {
@@ -46,7 +54,9 @@ function mapDispatchToProps(dispatch) {
     getAllCampaigns: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(fetchAllCampaigns());
-    }
+    },
+    dispatch,
+    mustnotReload: () => dispatch(mustnotReload())
   };
 }
 

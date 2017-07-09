@@ -18,6 +18,7 @@ import {
   CHOOSE_CAMPAIGN,
   CREATE_CAMPAIGN_SUCCESS,
   MAKE_DONATIONS,
+  MUSTNOT_RELOAD,
 } from 'globalConstants';
 
 const initialState = fromJS({
@@ -34,10 +35,13 @@ const initialState = fromJS({
   isError: null,
   selectedCampaign: null,
   campaigns: null,
+  mustReload: false,
 });
 
 function globalReducer(state = initialState, action) {
   switch (action.type) {
+    case MUSTNOT_RELOAD:
+      return state.set('mustReload', false);
     case MAKE_DONATIONS:
       let upd = action.data;
       upd['amount'] = parseInt(upd['amount']);
@@ -46,7 +50,7 @@ function globalReducer(state = initialState, action) {
       const currCampaign = list[index];
       currCampaign.donations.push(upd);
       list.splice(index, 1, currCampaign);
-      return state.set('campaigns', list);
+      return state.set('campaigns', list).set('mustReload', true);
     case CHOOSE_CAMPAIGN:
       return state.set('selectedCampaign', action.campaignIndex);
     case SET_AUTH:
