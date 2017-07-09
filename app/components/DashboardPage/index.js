@@ -16,7 +16,7 @@ import { DashboardPageElement } from './style';
 import makeSelectGlobal from '../../globalSelectors';
 import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router';
-
+import Loading from 'assets/loading.gif'
 
 class DashboardPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -52,7 +52,7 @@ class DashboardPage extends React.Component { // eslint-disable-line react/prefe
         </DashboardPageElement>
       );
     else if (this.props.Global.currentlySending)
-      return <div style={{textAlign: 'center'}}><h1>Loading..</h1></div>;
+      return <div style={{textAlign: 'center'}}>{Loading}</div>;
     else
       return (<div style={{textAlign: 'center'}}>You should <Link to={`/login`}>log in</Link></div>);
   }

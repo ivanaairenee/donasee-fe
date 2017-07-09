@@ -13,6 +13,18 @@ export const NavigationElement = styled.nav`
     max-width: 100%;
   }
 
+  Link {
+    max-height: 100%;
+  }
+
+  .navIcon {
+    height: 2rem;
+
+    @media screen and (min-width: 41em){
+      display:none;
+    }
+  }
+
   .mobile {
     width: 100%;
     height: auto;

@@ -5,6 +5,7 @@
  */
 import React, { PropTypes } from 'react';
 import logo from 'assets/logo.png';
+import navIcon from 'assets/navigation.png'
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
@@ -13,8 +14,21 @@ import makeSelectGlobal from '../../globalSelectors';
 import { createStructuredSelector } from 'reselect';
 import { logout } from '../../globalActions';
 
-
 class Navigation extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  constructor() {
+    super();
+    this.state = {
+      nav: false,
+    };
+
+    this.navToggle = this.navToggle.bind(this);
+  }
+
+  navToggle = () => {
+    const newValue= this.state.nav ? false : true;
+    this.setState({nav:newValue})
+  }
+
   render() {
     return (
       <NavigationElement>
@@ -45,11 +59,34 @@ class Navigation extends React.Component { // eslint-disable-line react/prefer-s
               </button>
             }
           </div>
+          <button onClick={this.navToggle} className="navIcon"><img className="navIcon" src={navIcon} /></button>
         </div>
-        <div className="mobile">
-          <button className="campaign">START A CAMPAIGN</button>
-          <button className="menu">LOGIN/SIGNUP</button>
-        </div>
+        {
+          !this.state.nav ? null :
+          (
+            <div className="mobile">
+              <button className="campaign">START A CAMPAIGN</button>
+              <button className="menu">
+              <Link to={`/`}>HOME</Link>
+              </button>
+              {
+                this.props.Global.loggedIn && <button className="menu" onClick={() => this.props.dispatch(push('/dashboard'))}>
+                  DASHBOARD
+                </button>
+              }
+              {
+                this.props.Global.loggedIn && <button className="menu" onClick={() => this.props.logout()}>
+                  LOGOUT
+                </button>
+              }
+              {
+                !this.props.Global.loggedIn && <button className="menu" onClick={() => this.props.dispatch(push('/login'))}>
+                  LOGIN/SIGNUP
+                </button>
+              }
+            </div>
+          )
+        }
       </NavigationElement>
     );
   }
