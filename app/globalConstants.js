@@ -16,3 +16,7 @@ export const CONFIRM_FORGET_PASSWORD_REQUEST = 'app/CONFIRM_FORGET_PASSWORD_REQU
 export const LOGOUT = 'app/LOGOUT';
 export const REQUEST_ERROR = 'app/REQUEST_ERROR';
 export const CLEAR_ERROR = 'app/CLEAR_ERROR';
+export const FETCH_CAMPAIGNS = 'app/FETCH_CAMPAIGNS';
+export const CHOOSE_CAMPAIGN = 'app/CHOOSE_CAMPAIGN';
+export const MAKE_DONATIONS = 'app/MAKE_DONATIONS';
+export const DEFAULT_ACTION = 'app/DEFAULT_ACTION';

@@ -4,49 +4,68 @@
 *
 */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { isEmpty } from 'lodash';
 
 import CampaignProgress from 'components/CampaignProgress';
 import placeholder from 'assets/placeholderkid.png';
 import placeholder1 from 'assets/placeholdersickman.png';
 import { DashboardPageElement } from './style';
+import makeSelectGlobal from '../../globalSelectors';
+import { createStructuredSelector } from 'reselect';
+import { Link } from 'react-router';
+
 
 class DashboardPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
   render() {
-    return (
-      <DashboardPageElement>
-        <div className="dashboard">
-          <div className="profile">
-            <h1> Gereja GBI Pengampon </h1><hr />
-            <h2> Verified </h2>
+    const { user, campaigns } = this.props.Global;
+    const used = campaigns ? campaigns : user ? user.campaigns : [];
+    let userCampaigns = '';
+    if (used)
+      userCampaigns = used.filter((campaign) => campaign.user === user.id).map((campaign, idx) => (
+                    <CampaignProgress
+                        key={ idx }
+                        title={ campaign.title }
+                        amount={ campaign.money_needed }
+                        current={ campaign.donations.map((donation) => donation.amount).reduce((a, b) => a + b , 0) }
+                        image={ campaign.image }
+                      />
+                    )
+                  );
+    if (this.props.Global && !isEmpty(this.props.Global.user))
+      return (
+        <DashboardPageElement>
+          <div className="dashboard">
+            <div className="profile">
+              <h1>{ user.userprofile.community_name }</h1>
+              <h3>{ user.email }</h3>
+              <h2>{ user.userprofile.status }</h2>
+            </div>
+            <div className="content">
+              <h1> Progress Campaign </h1>
+              { userCampaigns }
+            </div>
           </div>
-          <div className="content">
-            <h1> Progress Campaign </h1>
-            <CampaignProgress
-              title="Donasi Biaya Operasi Cardiac Bypass Bapak Phillip Susanto"
-              amount="Rp. 50.000.000"
-              current="Rp. 35.000.000"
-              image={placeholder}
-            />
-            <CampaignProgress
-              title="Donasi Sumbangan Uang Sekolah Laurentia Ronda"
-              amount="Rp. 60.000.000"
-              current="Rp. 30.000.000"
-              image={placeholder1}
-            />
-          </div>
-        </div>
-      </DashboardPageElement>
-    );
+        </DashboardPageElement>
+      );
+    else if (this.props.Global.currentlySending)
+      return <div style={{textAlign: 'center'}}><h1>Loading..</h1></div>;
+    else
+      return (<div style={{textAlign: 'center'}}>You should <Link to={`/login`}>log in</Link></div>);
   }
 }
 
-DashboardPage.propTypes = {
 
+DashboardPage.propTypes = {
+  Global: PropTypes.object,
 };
 
+const mapStateToProps = createStructuredSelector({
+  Global: makeSelectGlobal(),
+});
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -55,4 +74,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(DashboardPage);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

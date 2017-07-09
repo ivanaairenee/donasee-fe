@@ -16,7 +16,19 @@ import {
   LOGOUT,
   REQUEST_ERROR,
   CLEAR_ERROR,
+  DEFAULT_ACTION,
+  FETCH_CAMPAIGNS,
+  CHOOSE_CAMPAIGN,
+  MAKE_DONATIONS,
 } from './globalConstants';
+
+export function chooseCampaign(campaignIndex) {
+  return { type: CHOOSE_CAMPAIGN, campaignIndex };
+}
+
+export function makeDonations(data) {
+  return { type: MAKE_DONATIONS, data };
+}
 
 /**
  * Sets the authentication state of the application
@@ -105,4 +117,19 @@ export function requestError(error) {
  */
 export function clearError() {
   return { type: CLEAR_ERROR };
+}
+
+/**
+ * Tells the app to fetch all available campaigns
+ */
+export function fetchAllCampaigns() {
+  return {
+    type: FETCH_CAMPAIGNS,
+  };
+}
+
+export function defaultAction() {
+  return {
+    type: DEFAULT_ACTION,
+  };
 }

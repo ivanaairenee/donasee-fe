@@ -85,6 +85,7 @@ injectGlobal`
 
   button {
     outline: 0;
+    cursor: pointer;
   }
 
   body {

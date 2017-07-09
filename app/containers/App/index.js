@@ -11,16 +11,27 @@
  * the linting exception.
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import gtmParts from 'react-google-tag-manager';
 import Navigation from 'components/Navigation';
-import PaymentPage from 'components/PaymentPage';
+import HomePage from 'containers/HomePage';
+import CreateCampaign from 'components/CreateCampaign';
+import { fetchLogin } from 'globalActions';
+import makeSelectGlobal from 'globalSelectors';
+import { createStructuredSelector } from 'reselect';
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
     children: React.PropTypes.node,
   };
+
+  componentDidMount() {
+    if (this.props.Global.loggedIn) {
+      this.props.fetchLogin();
+    }
+  }
 
   render() {
     return (
@@ -32,6 +43,20 @@ export default class App extends React.PureComponent { // eslint-disable-line re
     );
   }
 }
+
+const mapStateToProps = createStructuredSelector({
+  Global: makeSelectGlobal(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchLogin: () => dispatch(fetchLogin()),
+    dispatch,
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
 
 
 export class GoogleTagManager extends React.Component {

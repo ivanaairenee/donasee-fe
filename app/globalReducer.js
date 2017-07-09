@@ -14,6 +14,10 @@ import {
   SENDING_REQUEST,
   REQUEST_ERROR,
   CLEAR_ERROR,
+  FETCH_CAMPAIGNS,
+  CREATE_CAMPAIGNS,
+  CHOOSE_CAMPAIGN,
+  MAKE_DONATIONS,
 } from 'globalConstants';
 
 const initialState = fromJS({
@@ -28,11 +32,23 @@ const initialState = fromJS({
   isLoading: false,
   isLoaded: false,
   isError: null,
-  selectedCampaign: 1,
+  selectedCampaign: null,
+  campaigns: null,
 });
 
 function globalReducer(state = initialState, action) {
   switch (action.type) {
+    case MAKE_DONATIONS:
+      let upd = action.data;
+      upd['amount'] = parseInt(upd['amount']);
+      const list = state.get('campaigns');
+      const index = list.findIndex(c => c.id === action.data.campaign);
+      const currCampaign = list[index];
+      currCampaign.donations.push(upd);
+      list.splice(index, 1, currCampaign);
+      return state.set('campaigns', list);
+    case CHOOSE_CAMPAIGN:
+      return state.set('selectedCampaign', action.campaignIndex);
     case SET_AUTH:
       return state.set('loggedIn', action.newAuthState);
     case SET_USER:
@@ -48,6 +64,8 @@ function globalReducer(state = initialState, action) {
       return state.set('error', action.error);
     case CLEAR_ERROR:
       return state.set('error', '');
+    case FETCH_CAMPAIGNS:
+      return state.set('campaigns', action.data);
     default:
       return state;
   }
