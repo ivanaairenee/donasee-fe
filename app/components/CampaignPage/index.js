@@ -55,7 +55,7 @@ class CampaignPage extends React.Component { // eslint-disable-line react/prefer
                 <div className="campaign-headers">
                   <h1> {campaign.title} </h1>
                   <h3>
-                    { `Campaign oleh Komunitas ${campaign.community_name}` }
+                    { `Campaign oleh ${campaign.community_name}` }
                   </h3>
                   <div className="content">
                     <span className="logo">
